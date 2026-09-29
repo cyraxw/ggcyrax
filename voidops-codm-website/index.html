@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>XII//CYRAX — CODM Loadouts</title>
+    <meta name="description" content="COD Mobile attachments, HUDs, sensitivity and graphics settings.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="noise"></div>
+    <div class="topo"></div>
+    <header class="topbar"><a class="brand" href="#"><span class="brand-mark">13</span><span>CYRAX<span
+                    class="purple">//</span>GG<small>CODM LOADOUT DATABASE</small></span></a>
+        <nav><a href="#loadouts">Loadouts</a><a href="#settings">Settings</a><a href="#featured">Featured</a></nav>
+        <div class="nav-actions"><button class="ghost" id="adminOpen">ADMIN LOGIN</button><button class="menu"
+                id="menuBtn">☰</button></div>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-copy">
+                <div class="eyebrow"><i></i> COMMUNITY TACTICAL DATABASE</div>
+                <h1>BUILD YOUR<br><span>ADVANTAGE.</span></h1>
+                <p>Weapon builds, tuned sensitivity, clean HUDs. Find your setup. Copy it. Drop in.</p>
+                <div class="hero-actions"><a class="btn primary" href="#loadouts">EXPLORE BUILDS <b>↘</b></a><a
+                        class="btn secondary" href="#settings">PLAYER SETTINGS</a></div>
+                <div class="stats">
+                    <div><strong id="buildCount">--</strong><small>LOADOUTS</small></div>
+                    <div><strong>01</strong><small>MISSION: DOMINATE</small></div>
+                    <div><strong>∞</strong><small>WAYS TO PLAY</small></div>
+                </div>
+            </div>
+            <div class="hero-art">
+                <div class="orbit orbit1"></div>
+                <div class="orbit orbit2"></div>
+                <div class="crosshair">+</div>
+                <div class="weapon-card">
+                    <div class="weapon-tag">FEATURED BUILD / 001</div>
+                    <div class="weapon-visual">⌁</div>
+                    <div class="weapon-name">META<br><span>ARMORY</span></div>
+                    <div class="weapon-line"></div>
+                    <div class="weapon-foot"><span>TACTICAL CONFIGURATION</span><span class="live-dot">● ONLINE</span>
+                    </div>
+                </div><span class="coord c1">15°08' N<br>120°35' E</span><span class="coord c2">FIG. 01 / LOADOUT</span>
+            </div>
+        </section>
+        <section class="featured section" id="featured">
+            <div class="section-head">
+                <div>
+                    <div class="eyebrow">01 / SPOTLIGHT</div>
+                    <h2>FEATURED <span>DROP</span></h2>
+                </div><span class="section-note">LATEST INTEL // MEDIA</span>
+            </div>
+            <div class="feature-grid">
+                <div class="media-frame" id="featureMedia">
+                    <div class="media-placeholder"><span class="play">▶</span><strong>FIELD
+                            FOOTAGE</strong><small>Featured video or image will appear here</small></div>
+                </div>
+                <div class="feature-info"><span class="pill">EDITOR'S PICK</span>
+                    <h3 id="featureTitle">The current meta.<br>Dialed to perfection.</h3>
+                    <p id="featureDesc">Featured builds and gameplay highlights, curated for the community.</p><a
+                        href="#loadouts" class="text-link">VIEW LOADOUTS ↗</a>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="loadouts">
+            <div class="section-head">
+                <div>
+                    <div class="eyebrow">02 / ARMORY</div>
+                    <h2>WEAPON <span>BUILDS</span></h2>
+                </div>
+                <div class="filters"><input id="search" placeholder="Search weapon / code..."><select id="category">
+                        <option value="">ALL WEAPONS</option>
+                        <option>Assault Rifle</option>
+                        <option>SMG</option>
+                        <option>Sniper</option>
+                        <option>LMG</option>
+                        <option>Shotgun</option>
+                        <option>Marksman</option>
+                    </select></div>
+            </div>
+            <div class="cards" id="loadoutGrid">
+                <div class="empty">CONNECT DATABASE OR ADD BUILDS IN ADMIN.</div>
+            </div>
+        </section>
+        <section class="section settings" id="settings">
+            <div class="section-head">
+                <div>
+                    <div class="eyebrow">03 / PLAYER CONFIG</div>
+                    <h2>PLAYER <span>SETTINGS</span></h2>
+                </div><span class="section-note">COPY. APPLY. ADAPT.</span>
+            </div>
+            <div class="settings-grid">
+                <article class="setting-panel">
+                    <div class="panel-head"><span>⌗</span>
+                        <div>
+                            <h3>HUD LAYOUTS</h3><small>CONTROL SCHEMES</small>
+                        </div>
+                    </div>
+                    <div id="hudList" class="setting-list"></div>
+                </article>
+                <article class="setting-panel">
+                    <div class="panel-head"><span>⌁</span>
+                        <div>
+                            <h3>SENSITIVITY</h3><small>AIM & CAMERA VALUES</small>
+                        </div>
+                    </div>
+                    <div id="sensList" class="setting-list"></div>
+                </article>
+                <article class="setting-panel">
+                    <div class="panel-head"><span>◈</span>
+                        <div>
+                            <h3>GRAPHICS & COLOR</h3><small>VISUAL PRESETS / HEX</small>
+                        </div>
+                    </div>
+                    <div id="graphicsList" class="setting-list"></div>
+                </article>
+            </div>
+        </section>
+        <section class="cta">
+            <div>
+                <div class="eyebrow">YOUR LOADOUT. YOUR RULES.</div>
+                <h2>READY TO <span>DEPLOY?</span></h2>
+                <p>Got a build worth sharing? Submit it to the armory admin.</p>
+            </div><button class="btn primary" id="submitBuild">SUBMIT A BUILD ↗</button>
+        </section>
+    </main>
+    <footer><a class="brand" href="#"><span class="brand-mark">13</span><span>CYRAX<span
+                    class="purple">//</span>GG<small>CODM LOADOUT DATABASE</small></span></a>
+        <div class="footer-mid">COMMUNITY-MADE • NOT AFFILIATED WITH ACTIVISION OR CALL OF DUTY</div>
+        <div class="footer-right">© <span id="year"></span> VOID//OPS <span class="purple">●</span> BUILT FOR THE GRIND
+        </div>
+    </footer>
+    <div class="modal-backdrop" id="adminModal">
+        <div class="modal"><button class="close" data-close>×</button>
+            <div class="eyebrow">RESTRICTED ACCESS</div>
+            <h2>ADMIN <span>CONSOLE</span></h2>
+            <p class="muted">Sign in with the configured Supabase admin account to manage site content.</p>
+            <form id="loginForm"><label>Email<input type="email" id="adminEmail" required
+                        placeholder="admin@example.com"></label><label>Password<input type="password" id="adminPassword"
+                        required placeholder="••••••••"></label><button class="btn primary full">SIGN IN ↗</button>
+            </form>
+            <div id="adminStatus" class="status"></div>
+            <div id="adminPanel" hidden>
+                <hr>
+                <h3>ADD / EDIT CONTENT</h3>
+                <div class="admin-tabs"><button data-tab="loadout">Loadout</button><button
+                        data-tab="setting">Setting</button><button data-tab="feature">Featured media</button></div>
+                <form id="contentForm"><input type="hidden" id="contentId"><label>Content type<select id="contentType">
+                            <option value="loadout">Weapon loadout</option>
+                            <option value="setting">HUD / Sensitivity / Graphics</option>
+                            <option value="feature">Featured media</option>
+                        </select></label>
+                    <div id="dynamicFields"></div><button class="btn primary full">SAVE TO DATABASE</button>
+                </form>
+                <h3>EXISTING CONTENT</h3>
+                <div id="adminItems"></div>
+            </div>
+        </div>
+    </div>
+    <div class="toast" id="toast"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
