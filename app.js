@@ -1,8 +1,8 @@
 // CYRAX//GG — Supabase-backed CODM community database
 // 1) Create a Supabase project, run supabase.sql in SQL Editor.
 // 2) Paste Project URL and anon key below. Never put service_role key in browser code.
-const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
-const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+const SUPABASE_URL = "aodqmbryxgaxgxuuxvzi.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_aodqmbryxgaxgxuuxvzi";
 const configured = SUPABASE_URL.startsWith("https://") && !SUPABASE_URL.includes("YOUR_") && !SUPABASE_ANON_KEY.includes("YOUR_");
 const db = configured && window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 let currentUser = null, records = [];
