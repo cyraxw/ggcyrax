@@ -1,4 +1,4 @@
-# VOID//OPS — CODM Loadout Website
+# CYRAX//GG — CODM Loadout Website
 
 ## Quick publish (Supabase + Netlify)
 1. Create a free Supabase project at https://supabase.com.
