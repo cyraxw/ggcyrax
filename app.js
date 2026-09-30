@@ -38,9 +38,11 @@ $("submitBuild").onclick = () => {
 };
 
 function mediaMarkup(url, type) {
-    if (!url) return '<div class="media-placeholder"><span class="play">▶</span><strong>FIELD FOOTAGE</strong><small>Featured media coming soon</small></div>';
+    if (!url)
+        return '<div class="media-placeholder"><span class="play">▶</span><strong>FIELD FOOTAGE</strong><small>Featured media coming soon</small></div>';
     return type === "video" ? `<video src="${esc(url)}" controls playsinline></video>` : `<img src="${esc(url)}" alt="Featured CODM media">`
 }
+
 
 function renderFeature() {
     const f = records.find(x => x.type === "feature");
@@ -51,6 +53,29 @@ function renderFeature() {
     $("featureMedia").innerHTML = mediaMarkup(f.media_url, f.media_type);
     $("featureTitle").innerHTML = esc(f.title || "Featured drop");
     $("featureDesc").textContent = f.description || ""
+}
+function renderWeaponVisual(url) {
+    const container = $("weaponVisual");
+
+    if (!container) return;
+
+    if (!url) {
+        container.innerHTML = `
+            <div class="media-placeholder">
+                <strong>WEAPON VISUAL</strong>
+                <small>No weapon image available</small>
+            </div>
+        `;
+        return;
+    }
+
+    container.innerHTML = `
+        <img
+            class="weapon-visual-image"
+            src="${esc(url)}"
+            alt="Weapon visual"
+        >
+    `;
 }
 
 function renderLoadouts() {
@@ -69,10 +94,10 @@ function renderLoadouts() {
 
 function renderSettings() {
     for (const [type, id] of [
-            ["hud", "hudList"],
-            ["sensitivity", "sensList"],
-            ["graphics", "graphicsList"]
-        ]) {
+        ["hud", "hudList"],
+        ["sensitivity", "sensList"],
+        ["graphics", "graphicsList"]
+    ]) {
         let arr = records.filter(x => x.type === "setting" && x.category === type);
         $(id).innerHTML = arr.length ? arr.map(x => `<div class="setting-row"><div><b>${esc(x.title)}</b><small>${esc(x.description || "")}</small></div><button class="copy-btn" style="width:auto" data-setting="${esc(JSON.stringify(x.data || {}))}">COPY</button></div>`).join("") : '<div class="setting-row"><span class="muted">No presets published yet.</span></div>'
     }
@@ -161,18 +186,37 @@ async function renderAdminItems() {
         ascending: false
     });
     $("adminItems").innerHTML = (data || []).map(x => `<div class="admin-item"><span>${esc(x.title)} <small>(${esc(x.type)})</small></span><button data-delete="${x.id}">DELETE</button></div>`).join("") || '<p class="muted">No content yet.</p>';
-    document.querySelectorAll("[data-delete]").forEach(b => b.onclick = async () => {
-        if (!confirm("Delete this content?")) return;
-        const {
-            error
-        } = await db.from("content").delete().eq("id", b.dataset.delete);
-        if (error) toast(error.message);
-        else {
-            toast("Content deleted");
-            await load();
-            renderAdminItems()
-        }
-    })
+    document.querySelectorAll("[data-delete]").forEach(b => {
+  b.onclick = async () => {
+    if (!currentUser) {
+      toast("You must be logged in as an admin.");
+      return;
+    }
+
+    if (!confirm("Delete this content?")) return;
+
+    b.disabled = true;
+    b.textContent = "DELETING...";
+
+    const { error } = await db
+      .from("content")
+      .delete()
+      .eq("id", b.dataset.delete);
+
+    if (error) {
+      console.error("Delete failed:", error);
+      toast("Delete failed: " + error.message);
+      b.disabled = false;
+      b.textContent = "DELETE";
+      return;
+    }
+
+    toast("Content deleted.");
+
+    await load();
+    await renderAdminItems();
+  };
+});
 }
 $("contentForm").onsubmit = async e => {
     e.preventDefault();

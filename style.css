@@ -258,7 +258,7 @@ nav a:hover,
 
 .weapon-card {
     width: 75%;
-    height: 330px;
+    min-height: 330px;
     border: 1px solid #49365f;
     background: linear-gradient(135deg, #171020ee, #0c0a12f2);
     padding: 22px;
@@ -283,15 +283,24 @@ nav a:hover,
     letter-spacing: 1px;
     color: #a79bb8
 }
+#weaponVisual {
+    width: 100%;
+    max-width: 600px;
+    height: 280px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
 
-.weapon-visual {
-    font-size: 130px;
-    text-align: center;
-    color: #a855f7;
-    text-shadow: 0 0 50px #8b5cf6;
-    line-height: 1.25
 }
 
+.weapon-visual-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: 16px;
+}
 .weapon-name {
     font: 900 30px/1 Orbitron;
     letter-spacing: 1px
